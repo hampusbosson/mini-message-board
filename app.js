@@ -35,12 +35,23 @@ app.get('/new', (req, res) => {
     res.render("form")
 })
 
+app.get('/message/:id', (req, res) => {
+    const messageID = parseInt(req.params.id);
+    const message = messages.find(msg => msg.id === messageID);
+
+    if (message) {
+        res.render('message', {message: message});
+    } else {
+        res.status(404).send('message not found');
+    }
+})
+
 app.post('/new', (req, res) => {
     const userName = req.body.author;
     const message = req.body.message;
     let messageID = messages.length; 
 
-    messages.push({text: message, user: userName, added: new Date(), ID: messageID });
+    messages.push({text: message, user: userName, added: new Date(), id: messageID });
     
     res.redirect('/');
 })
