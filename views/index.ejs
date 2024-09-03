@@ -11,9 +11,11 @@
                     <li>
                         <strong><%= message.user %>:</strong> <%= message.text %> <br>
                         <small><%= message.added.toLocaleString() %></small>
+                        <button>Show message details</button>
                     </li>
                 <% }); %>
             </ul>
+            <a href="/new"><button>New message</button></a>
         </div>
     </body>
 </html>
