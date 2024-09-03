@@ -15,12 +15,14 @@ const messages = [
     {
       text: "Hi there!",
       user: "Amando",
-      added: new Date()
+      added: new Date(),
+      id: 0
     },
     {
       text: "Hello World!",
       user: "Charles",
-      added: new Date()
+      added: new Date(),
+      id: 1
     }
   ];
 
@@ -36,8 +38,9 @@ app.get('/new', (req, res) => {
 app.post('/new', (req, res) => {
     const userName = req.body.author;
     const message = req.body.message;
+    let messageID = messages.length; 
 
-    messages.push({text: message, user: userName, added: new Date() });
+    messages.push({text: message, user: userName, added: new Date(), ID: messageID });
     
     res.redirect('/');
 })
